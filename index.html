@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <p>Open your console. Key combination is 'foobar'.</p>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+let keys = [];
+const secret = 'foobar';
+
+window.addEventListener('keyup', e => {
+  keys = keys.concat([e.key]);
+  console.log(keys);
+
+  keys.splice(-secret.length - 1, keys.length - secret.length);
+
+  if (keys.join('').includes(secret)) {
+    console.log('%c YOU DID IT!!!!1!!one!!!', 'font-size: 50px; background-color: red; color: yellow; font-weight: bold');
+    keys = [];
+  }
+});
+</script>
+</body>
+</html>
